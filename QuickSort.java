@@ -11,27 +11,55 @@
 
 import java.util.ArrayList;
 
-public class QuickSort implements InterfaceComparar {
+public class QuickSort  {
 
     public QuickSort(){
 
     }
     /**
      *
-     * @param Comparable[] list
-     * @param int inf
-     * @param int sup
-     * @param String FileSort
-     * @return n/a
+     * @param ArrayList<Integer> list
+     * @return ArrayList<Integer> list
      * @author Alejandro Gomez y Ana Ramirez
      **/
 
-    @Override
-    public ArrayList compareTo(ArrayList list) {
-        // TODO Auto-generated method stub
-        return null;
+
+    public ArrayList<Integer> compareTo(ArrayList<Integer> list) {
+        int begi=0;
+        int end=list.size()-1;
+        begi=list.get(begi);
+        end=list.get(end);
+        quickSort(list,begi,end);
+        return list;
     }
 
+    private void quickSort(ArrayList<Integer>  arr, int begi, int end) {
+        if (begi < end) {
+            int partin = divi(arr, begi, end);
+
+            quickSort(arr, begi, partin-1);
+            quickSort(arr, partin+1, end);
+        }
+    }
+
+    private int divi(ArrayList<Integer> l, int begi, int end) {
+        int pivote = l.get(end);
+        int i = (begi-1);
+
+        for (int j = begi; j < end; j++) {
+            if (l.get(j)<= pivote) {
+                i++;
+                int temp = l.get(i);
+                l.set(i,l.get(j));
+                l.set(j,temp);
+            }
+        }
+
+        int t = l.get(i+1);
+        l.set(i+1,l.get(end));
+        l.set(end,t);
+        return i+1;
+    }
 
     
 }
