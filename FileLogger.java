@@ -1,3 +1,4 @@
+
 /*******************************************************
 * Universidad del Valle de Guatemala
 * Algoritmos y Estructuras de Datos
@@ -10,13 +11,15 @@
 * Ultima edicion: 09/02/2021
 ********************************************************/
 
-
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.BufferedReader;
 
 public class FileLogger {
 	
@@ -52,5 +55,61 @@ public class FileLogger {
 	 */
 	public static void AgregarTextoLineaNueva(String fileName, String newLine) throws IOException{
 		Files.write(Paths.get(fileName), newLine.getBytes(), StandardOpenOption.APPEND);
+	}
+
+	public String LeerArchivo(String a) {
+
+        //Referencias: https://stackoverflow.com/questions/13185727/reading-a-txt-file-using-scanner-class-in-java
+        //Referencias: https://stackoverflow.com/questions/326390/how-do-i-create-a-java-string-from-the-contents-of-a-file
+
+        //----------------------INSTANCIAS---------------------------
+
+        /* Se crean todas las instancias
+            a utilizar en este metodo*/
+        Scanner archivoLectura = new Scanner(System.in);
+       	String LineasTexto = "";
+
+        //-------------------------PROGRA DEFENSIVA----------------------
+
+        /* Se usa un trycatch para asegurarse
+            que exista un archivo, y asi 
+            accesarlo de forma correcta     */
+
+        try{archivoLectura = new Scanner(new File(a)); } 
+        catch(FileNotFoundException e){
+            return("No se ha encontrado un archivo"+ "\n Ingresa un archivo correcto");
+        } 
+        archivoLectura.useDelimiter("\n");
+		return LineasTexto;
+
+	}
+
+
+	/***
+	 * Agrega lineas nuevas de texto al archivo
+
+	 * @param String NombreARchivo
+	 * @throws IOException En caso ocurran problemas
+	 */
+
+	/*	Se define el metodo para leer los archivos
+		ingresados al sistema
+	*/
+	String Leer(String NombreArchivo) throws IOException {
+		//Se crea un buffer para leer
+		BufferedReader LectorPro = new BufferedReader(new FileReader(NombreArchivo));
+		//Se crea un trycatch para la creacion de Strings
+		try {
+			StringBuilder CreadorDeStrings = new StringBuilder();
+			String line = LectorPro.readLine();
+			//Ciclo while para agregar las lineas al String
+			while (line != null) {
+				CreadorDeStrings.append(line);
+				CreadorDeStrings.append("\n");
+				line = LectorPro.readLine();
+			}
+			//Devuelve el string con el texto del archio
+			return CreadorDeStrings.toString();
+		}
 	}
 }
