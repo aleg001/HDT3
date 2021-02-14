@@ -110,6 +110,8 @@ public class FileLogger {
 			}
 			//Devuelve el string con el texto del archio
 			return CreadorDeStrings.toString();
+		}catch(FileNotFoundException e){
+			return "Archivo no encontrado!";
 		}
 	}
 }
