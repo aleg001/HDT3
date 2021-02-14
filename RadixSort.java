@@ -7,47 +7,55 @@ import java.util.ArrayList;
  * Ramirez Fecha de creacion: 09/02/2021 Ultima edicion: 10/02/2021
  ********************************************************/
 
-public class RadixSort implements InterfaceComparar {
+public class RadixSort {
 
     public RadixSort(){
 
     }
-    @Override
+
     public ArrayList<Integer> compareTo(ArrayList<Integer> list) {
 
-        List<Integer>[] sidelist = new ArrayList[10];
-        sidelist=crearSide(sidelist);
+        //ArrayList<Integer> sidelist = new ArrayList<Integer>();
+        ArrayList<ArrayList<Integer>> sidelist=new ArrayList<ArrayList<Integer>>();
+        //sidelist=crearSide(sidelist);
         //ArrayList<Integer> sidelist=new ArrayList<Integer>();
-        int rad=list.length;
+        for (int i = 0; i < 10; i++)
+        {
+            ArrayList<Integer> nueva = new ArrayList<Integer>();
+            sidelist.add( nueva) ;
+        }
+
         boolean maxim= false;
         int pos = -1;
         int lugar = 1;
         while (!maxim){
-            maxLength=true;
+            maxim=true;
             for(Integer i:list){
                 pos=i/lugar;
-                sidelist[pos % 10].add(i);
-                maxim=false;
+                sidelist.get(pos % 10).add(i);
+                if(maxim && pos>0) {
+                    maxim = false;
+                }
             }
             int a=0;
-            for(int i=0;b<10; i++){
-                for(Integer inti: sidelist[i]){
-                    list[i++]=inti;
+            for(int i=0;i<10; i++){
+                for(int r=0;r<sidelist.get(i).size();r++){
+                    list.set(a++,sidelist.get(i).get(r));
                 }
-                sidelist[i].clear();
+                sidelist.remove(i);
             }
-            placement=placement*10;
+            lugar=lugar*10;
         }
         return list;
     }
 
-    private  crearSide(com List<Integer>){
+    /*private ArrayList<Integer>  crearSide(com List<Integer>){
         for (int i = 0; i < 10; i++)
         {
-            com[i] = new ArrayList<Integer>();
+            com.get(i) = new ArrayList<Integer>();
         }
         return com;
-    }
+    }*/
 
 }
 
