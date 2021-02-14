@@ -31,7 +31,7 @@ public class QuickSort implements InterfaceComparar {
      * @author Alejandro Gomez y Ana Ramirez
      **/
 
-    public static void QuickSorter(Comparable[] list, int inf, int sup, String FileSort)
+    public static void QuickSort()
     {
         int j = sup;
         int i = inf -1;
