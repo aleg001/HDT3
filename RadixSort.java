@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+
 /*******************************************************
  * Universidad del Valle de Guatemala Algoritmos y Estructuras de Datos
  * Profesor: Moises Gonzales RadixSort.java Autores: Alejandro Gomez y Ana
@@ -8,6 +9,9 @@ import java.util.ArrayList;
 
 public class RadixSort implements InterfaceComparar {
 
+    public RadixSort(){
+
+    }
     @Override
     public ArrayList<Integer> compareTo(ArrayList<Integer> list) {
 
@@ -17,11 +21,11 @@ public class RadixSort implements InterfaceComparar {
         int rad=list.length;
         boolean maxim= false;
         int pos = -1;
-        int placement = 1;
+        int lugar = 1;
         while (!maxim){
             maxLength=true;
             for(Integer i:list){
-                pos=i/placement;
+                pos=i/lugar;
                 sidelist[pos % 10].add(i);
                 maxim=false;
             }
