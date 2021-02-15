@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.lang.Math;
 import java.util.Random;
+import java.io.File;
 
 public class Driver {
     public static void main(String[] args){
@@ -18,10 +19,11 @@ public class Driver {
         vistaSort v=new vistaSort();
         v.bienve();
         Scanner scan = new Scanner(System.in);
-        boolean bandc=false;
+        boolean bandc=true;
         int opcion=0;
         while (opcion != 6 && bandc==true) {//loop que genera el menú para el usuario
             try{
+                System.out.println("MENU");
                 opcion = scan.nextInt(); //se copia la respuesta del ususario en una variable
 
             }catch(Exception e){
@@ -37,15 +39,19 @@ public class Driver {
                 acumulador=acumulador+ String.valueOf(nuevo)+",";
             }
             //creación de archivo
-            f.CrearArchivo();
-            f.AgregarTextoLineaNueva("Datos.txt",acumulador);
+            f.CreateArchivoTexto();
+            /* f.CrearArchivo(); */
+            //f.AgregarTextoLineaNueva("Datos.txt",acumulador);
+            f.EscribirLinea(acumulador);
             //lectura de archivo
-            String leido= f.Leer("Datos.txt");
+            String leido= f.LeerArchivo("Datos.txt");
+            //String leido= f.Leer("Datos.txt");
             //creación de Array para ordenar
             ArrayList<Integer> lista=new ArrayList<Integer>();
             String[] arrOfStr = leido.split(",");
             for(String a: arrOfStr){
-                lista.add(Integer.valueOf(a));
+                //lista.add(Integer.valueOf(a));
+                lista.add(Integer.valueOf(acumulador));
             }
 
             v.fileCreated();
@@ -53,38 +59,68 @@ public class Driver {
             if (opcion == 1 ){//se llama a gnome sort
                 GnomeSort g=new GnomeSort();
                 ArrayList<Integer> ordenada=new ArrayList<Integer>();
+                long start = System.nanoTime();
                 ordenada=g.compareTo(lista);
                 v.printOrden(ordenada,"Gnome Sort");
+                long elapsedTime = System.nanoTime() - start;
+                v.lordenada(elapsedTime);
+                start = System.nanoTime();
                 String reordenada=String.valueOf(g.compareTo(ordenada));
+                elapsedTime = System.nanoTime() - start;
+                v.lreordenada(start);
 
             } else if (opcion == 2){//se llama a merge sort
                 MergeSort g=new MergeSort();
                 ArrayList<Integer> ordenada=new ArrayList<Integer>();
+                long start = System.nanoTime();
                 ordenada=g.compareTo(lista);
+                long elapsedTime = System.nanoTime() - start;
+                v.lordenada(elapsedTime);
+                start = System.nanoTime();
                 v.printOrden(ordenada,"Merge Sort");
                 String reordenada=String.valueOf(g.compareTo(ordenada));
-
+                elapsedTime = System.nanoTime() - start;
+                v.lreordenada(start);
 
             } else if (opcion == 3){//se llama a quick sort
                 QuickSort g=new QuickSort();
                 ArrayList<Integer> ordenada=new ArrayList<Integer>();
+                long start = System.nanoTime();
                 ordenada=g.compareTo(lista);
+                long elapsedTime = System.nanoTime() - start;
+                v.lordenada(elapsedTime);
+                start = System.nanoTime();
                 v.printOrden(ordenada,"Quick Sort");
                 String reordenada=String.valueOf(g.compareTo(ordenada));
+                elapsedTime = System.nanoTime() - start;
+                v.lreordenada(start);
 
             }else if (opcion == 4){//se llama a radix sort
                 RadixSort g=new RadixSort();
                 ArrayList<Integer> ordenada=new ArrayList<Integer>();
+                long start = System.nanoTime();
                 ordenada=g.compareTo(lista);
+                long elapsedTime = System.nanoTime() - start;
+                v.lordenada(elapsedTime);
+                start = System.nanoTime();
                 v.printOrden(ordenada,"Radix Sort");
                 String reordenada=String.valueOf(g.compareTo(ordenada));
+                elapsedTime = System.nanoTime() - start;
+                v.lreordenada(start);
+
 
             }else if (opcion == 5){//se llama a bubble sort
                 BubbleSort g=new BubbleSort();
                 ArrayList<Integer> ordenada=new ArrayList<Integer>();
+                long start = System.nanoTime();
                 ordenada=g.compareTo(lista);
+                long elapsedTime = System.nanoTime() - start;
+                v.lordenada(elapsedTime);
+                start = System.nanoTime();
                 v.printOrden(ordenada,"Bubble Sort");
                 String reordenada=String.valueOf(g.compareTo(ordenada));
+                elapsedTime = System.nanoTime() - start;
+                v.lreordenada(start);
 
 
             } else if (opcion == 6){

@@ -34,4 +34,13 @@ public class vistaSort{
     public void fileCreated(){
         System.out.println("Su archivo ha sido creado y leido con exito");
     }
+
+    public void lordenada(long nano){
+        System.out.println("La lista se ha ordenado en "+String.valueOf(nano)+" nanosegundos" );
+    }
+
+    public void lreordenada(long nano){
+        System.out.println("La lista se ha reordenado en "+String.valueOf(nano)+" nanosegundos" );
+    }
+
 }
