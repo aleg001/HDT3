@@ -1,10 +1,27 @@
-package colocarr;
+/*******************************************************
+* Universidad del Valle de Guatemala
+* Algoritmos y Estructuras de Datos
+* Profesor: Moises Gonzales
+* Driver.java
+* Autores: Alejandro Gomez y Ana Ramirez
+* Fecha de creacion: 09/02/2021
+* Ultima edicion: 09/02/2021
+********************************************************/
+
 import java.util.*;
 
 public class RadixSort {
 	public RadixSort() {
 		
 	}
+	    /**
+     * Metodo QuickSorter
+     * @param Comparable[] lista
+     * @param Int bajo
+     * @param Int alto
+     * @author Alejandro Gomez y Ana Ramirez
+     **/
+	
 	private int get_max_val(int my_arr[], int arr_len) {
 	      int max_val = my_arr[0];
 	      for (int i = 1; i < arr_len; i++)

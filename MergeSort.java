@@ -1,20 +1,38 @@
-package colocarr;
+/*******************************************************
+* Universidad del Valle de Guatemala
+* Algoritmos y Estructuras de Datos
+* Profesor: Moises Gonzales
+* MergeSort.java
+* Autores: Alejandro Gomez y Ana Ramirez
+* Fecha de creacion: 09/02/2021
+* Ultima edicion: 09/02/2021
+********************************************************/
+import java.util.Arrays;
+import java.util.ArrayList;
 
 public class MergeSort {
-	public MergeSort() {
-		
-	}
-	void merge(int arr[], int l, int m, int r) 
+    
+    
+
+    /**
+    * Método para proceso de merge
+    * 
+    * @param arr[] lista
+    * @param Comparable lista
+    * @param Comparable lista
+    * @return Comparable lista
+    * @author Alejandro Gomez y Ana Ramirez
+    **/
+
+    public void MergeSorter(int arr[], int l, int m, int r) 
     { 
-        // Find sizes of two subarrays to be merged 
-        int n1 = m - l + 1; 
-        int n2 = r - m; 
+        //Se definen variables
+        int n1 = m - l + 1;  int n2 = r - m; 
   
-        /* Create temp arrays */
-        int L[] = new int [n1]; 
-        int R[] = new int [n2]; 
+        //Se crean arrays de ints
+        int L[] = new int [n1]; int R[] = new int [n2]; 
   
-        /*Copy data to temp arrays*/
+        //La info se pasa a los arrays por medio de un for
         for (int i=0; i<n1; ++i) 
             L[i] = arr[l + i]; 
         for (int j=0; j<n2; ++j) 
@@ -62,28 +80,28 @@ public class MergeSort {
   
     // Main function that sorts arr[l..r] using 
     // merge() 
-    private void sort(int arr[], int l, int r) 
+    private void Sort(int arr[], int l, int r) 
     { 
-    	
+      
         if (l < r) 
         { 
             // Find the middle point 
             int m = (l+r)/2; 
   
             // Sort first and second halves 
-            sort(arr, l, m); 
-            sort(arr , m+1, r); 
+            Sort(arr, l, m); 
+            Sort(arr , m+1, r); 
   
             // Merge the sorted halves 
-            merge(arr, l, m, r); 
+            MergeSorter(arr, l, m, r); 
         } 
         
     } 
     
     public int[] compareTo(int[] list) {
-    	int l=0;
-    	int r=list.length-1;
-    	sort(list,l,r);
-    	return list;
+      int l=0;
+      int r=list.length-1;
+      Sort(list,l,r);
+      return list;
     }
 }

@@ -20,7 +20,9 @@ import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.util.Random;
 
 public class FileLogger {
 	
@@ -151,32 +153,23 @@ public class FileLogger {
 		
 	*/
 
-    public static void CreadorDeNumerosEscritura(ArrayList<Integer> Numbers){
-        Numbers.clear();
+    public int[] CreadorDeNumerosEscritura(){
         try{
 			//Se declaran instancias
-            Random rand = new Random();String Ubicacion = "datos.txt";String lines = "";StringBuilder CreadorDeStrings = new StringBuilder();
-            //Se declara ciclo for para generar 3000 numeros aleatorios
-            for(int i=0;i<3000;i++){
-                //Se declaran instancias
-				boolean CicloBooleano = true; int NumerosAleatorios = rand.nextInt(6000);
-                do{
-					//Se crea ciclo if para los numeros
-                    if(Numbers.contains(NumerosAleatorios)){
-                        NumerosAleatorios = rand.nextInt(6000);
-					//Condicion distinta
-                    }else{
-                        Numbers.add(NumerosAleatorios);
-                        CicloBooleano=false;
-                    }
-                }while(CicloBooleano);               
+            Random rand = new Random();
+			String Ubicacion = "datos.txt";
+			String lines = "";
+			StringBuilder CreadorDeStrings = new StringBuilder();
+
+			int x = rand.nextInt(2990)+10;
+			int[] numerosAcumulados = new int[x];
+            String acumulador="";
+            for(int i=0; i<x;i++){
+                int nuevo=rand.nextInt(100)+1;
+                acumulador=acumulador+ String.valueOf(nuevo)+",";
+				numerosAcumulados[i] = nuevo;
             }
-            
-            //guardar los numeros en string
-            for(Integer Numerito : Numbers){
-                CreadorDeStrings.append(Numerito + " ");
-            }
-            lines = CreadorDeStrings.toString();
+			
 
             //Se almacena lo del archivo creado
             File ArchivoCreado = new File(Ubicacion);
@@ -186,14 +179,19 @@ public class FileLogger {
             FileWriter EscrituraArchivo = new FileWriter(ArchivoCreado); BufferedWriter BufferEscritor = new BufferedWriter(EscrituraArchivo);
 
             //Los archivos de texto se escriben y cierran
-            BufferEscritor.write(lines);BufferEscritor.close();
+            BufferEscritor.write(acumulador);BufferEscritor.close();
 
 			//En caso de un error
+			return numerosAcumulados;
         }catch(Exception e){
             e.printStackTrace();
 			System.out.println("Algo salio mal...");
+			return null;
+			
         }
+
+		
     }
 
-
+		
 }
