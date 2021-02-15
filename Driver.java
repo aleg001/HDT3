@@ -23,6 +23,8 @@ public class Driver {
         Scanner scan = new Scanner(System.in);
         boolean bandc=true;
         int opcion=0;int counter = 0;
+        int[] lista = f.CreadorDeNumerosEscritura();
+        v.ElementosLista(lista.length);
         while (opcion != 6 && bandc==true) {//loop que genera el menú para el usuario
             try{
                 v.bienve();
@@ -57,7 +59,7 @@ public class Driver {
             
       
      
-            int[] lista = f.CreadorDeNumerosEscritura();
+            
             
            
             /*
@@ -69,7 +71,7 @@ public class Driver {
             } */
 
             v.fileCreated(); 
-
+            
             if (opcion == 1 ){//se llama a gnome sort
                 
                 //String stringGnome = GnomeSort.GnomeSorter(info);
@@ -126,9 +128,10 @@ public class Driver {
                 long start = System.nanoTime();
                 ordenada=g.compareTo(lista);
                 long elapsedTime = System.nanoTime() - start;
-                v.lordenada(elapsedTime);
+                
                 start = System.nanoTime();
                 v.printOrden(ordenada,"Radix Sort");
+                v.lordenada(elapsedTime);
                 String reordenada=String.valueOf(g.compareTo(ordenada));
                 elapsedTime = System.nanoTime() - start;
                 v.lreordenada(elapsedTime);
@@ -140,9 +143,9 @@ public class Driver {
                 long start = System.nanoTime();
                 ordenada=g.compareTo(lista);
                 long elapsedTime = System.nanoTime() - start;
-                v.lordenada(elapsedTime);
                 start = System.nanoTime();
                 v.printOrden(ordenada,"Bubble Sort");
+                v.lordenada(elapsedTime);
                 String reordenada=String.valueOf(g.compareTo(ordenada));
                 elapsedTime = System.nanoTime() - start;
                 v.lreordenada(elapsedTime);

@@ -160,7 +160,7 @@ public class FileLogger {
 			String Ubicacion = "datos.txt";
 			String lines = "";
 			StringBuilder CreadorDeStrings = new StringBuilder();
-
+			
 			int x = rand.nextInt(2990)+10;
 			int[] numerosAcumulados = new int[x];
             String acumulador="";

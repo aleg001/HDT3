@@ -10,8 +10,6 @@
 
 import java.util.ArrayList;
 
-import jdk.tools.jlink.internal.SymLinkResourcePoolEntry;
-
 import java.util.*;
 
 public class vistaSort{
@@ -68,7 +66,16 @@ public class vistaSort{
         System.out.println("Gracias por utilizar este programa.¡Hasta pronto!");
     }
    
-   
+    
+    /**
+     * Metodo ElementosLista
+     * @param n/a
+     * @author Alejandro Gomez y Ana Ramirez
+     * @return n/a
+     **/
+   public void ElementosLista(int variablexd){
+       System.out.println("La cantidad de numeros que genero es: " +variablexd);
+   }
     /**
      * Metodo noValid
      * @param n/a
