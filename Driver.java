@@ -47,18 +47,25 @@ public class Driver {
             String leido= f.LeerArchivo("Datos.txt");
             //String leido= f.Leer("Datos.txt");
             //creación de Array para ordenar
-            ArrayList<Integer> lista=new ArrayList<Integer>();
+
             String[] arrOfStr = leido.split(",");
+            int acu=0;
             for(String a: arrOfStr){
-                //lista.add(Integer.valueOf(a));
-                lista.add(Integer.valueOf(acumulador));
+                acu++;
+            }
+            int[] lista =new int[acu];
+            acu=0;
+            for(String a: arrOfStr){
+                int valor=Integer.valueOf(a);
+                lista[acu]=valor;
+                acu++;
             }
 
             v.fileCreated();
 
             if (opcion == 1 ){//se llama a gnome sort
                 GnomeSort g=new GnomeSort();
-                ArrayList<Integer> ordenada=new ArrayList<Integer>();
+                int[] ordenada=new int[acu];
                 long start = System.nanoTime();
                 ordenada=g.compareTo(lista);
                 v.printOrden(ordenada,"Gnome Sort");
@@ -71,7 +78,7 @@ public class Driver {
 
             } else if (opcion == 2){//se llama a merge sort
                 MergeSort g=new MergeSort();
-                ArrayList<Integer> ordenada=new ArrayList<Integer>();
+                int[] ordenada=new int[acu];
                 long start = System.nanoTime();
                 ordenada=g.compareTo(lista);
                 long elapsedTime = System.nanoTime() - start;
@@ -84,7 +91,7 @@ public class Driver {
 
             } else if (opcion == 3){//se llama a quick sort
                 QuickSort g=new QuickSort();
-                ArrayList<Integer> ordenada=new ArrayList<Integer>();
+                int[] ordenada=new int[acu];
                 long start = System.nanoTime();
                 ordenada=g.compareTo(lista);
                 long elapsedTime = System.nanoTime() - start;
@@ -97,7 +104,7 @@ public class Driver {
 
             }else if (opcion == 4){//se llama a radix sort
                 RadixSort g=new RadixSort();
-                ArrayList<Integer> ordenada=new ArrayList<Integer>();
+                int[] ordenada=new int[acu];
                 long start = System.nanoTime();
                 ordenada=g.compareTo(lista);
                 long elapsedTime = System.nanoTime() - start;
@@ -111,7 +118,7 @@ public class Driver {
 
             }else if (opcion == 5){//se llama a bubble sort
                 BubbleSort g=new BubbleSort();
-                ArrayList<Integer> ordenada=new ArrayList<Integer>();
+                int[] ordenada=new int[acu];
                 long start = System.nanoTime();
                 ordenada=g.compareTo(lista);
                 long elapsedTime = System.nanoTime() - start;

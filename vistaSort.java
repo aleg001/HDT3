@@ -14,7 +14,7 @@ public class vistaSort{
         System.out.println("6. Salir\n\n");
     }
 
-    public void printOrden(ArrayList<Integer> lista, String TypeSort){
+    public void printOrden(int[] lista, String TypeSort){
         String paraImp="[";
         for(int i=0; i < lista.size(); i++){
             paraImp=String.valueOf(lista.get(i))+", ";
