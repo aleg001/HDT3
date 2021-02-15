@@ -7,7 +7,7 @@ import java.util.Arrays;
  * Ramirez Fecha de creacion: 09/02/2021 Ultima edicion: 09/02/2021
  ********************************************************/
 
-public class GnomeSort implements InterfaceComparar {
+public class GnomeSort {
 
 
     /**
@@ -16,31 +16,24 @@ public class GnomeSort implements InterfaceComparar {
      * @return String
      * @author Alejandro Gomez y Ana Ramirez
      **/
-    public static String GnomeSorter(Comparable[] lista) {
+
+    //sort para tipo Gnome
+    public static String GnomeSorter(Comparable[] list){
+        //Se declaran variables
+        int i=1;int j=2;Comparable tmp;
         
-        /* Se define el metodo para realizar
-        el sorting del tipo Gnome */
-
-        int i = 1; int j = 2;
-        Comparable Temporary;
-
-        while (i < lista.length) {
-            if (lista[i - 1].compareTo(lista[i]) < 0) 
-            {
-                Temporary = lista[i - 1];
-                lista[i - 1] = lista[i]; lista[i--] = Temporary;
-                i = (i == 0) ? j++ : i;
-            } else {
-                i = j;
-                j++;
-            }
+        //Ciclo while para saber longitud de lista.
+        while(i<list.length){
+            //Ciclo if para comparar tamanio lista
+            if(list[i-1].compareTo(list[i])<0){
+                tmp = list[i-1]; list[i-1] =list[i]; list[i--] = tmp; i = (i==0) ? j++:i;
+            
+                //En caso no se cumpla con la condicion antes declarada
+            }else{i = j; j++;}
         }
-        return ("Al ordenar los datos, quedan asi: ");
+        return ("Sus datos en orden son: ");
     }
 
-    @Override
-    public ArrayList compareTo(ArrayList list) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+
+
 }
