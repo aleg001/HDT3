@@ -13,9 +13,6 @@ import java.io.IOException;
 
 public class BubbleSort {
     
-
-
-
 	/**
      * 
      * @param Comparable[] list
@@ -23,95 +20,26 @@ public class BubbleSort {
      * @author Alejandro Gomez y Ana Ramirez
      **/
 
-    public static void bubbleSort(Comparable[] list) {
+    public static String bubbleSort(Comparable[] list) {
 		
 		/*	Metodo creado para la realizacion 
 			de procesos del 
 			tipo BubbleSort */
 
-		//Se definen las variables a utilizar
-		int countCompareOps = 0;
-		int countReplacement = 0;
-		String FileBurbujas = "";
-		String newLine = "";
-
-		//Se crea un trycatch para la realización del log de este sorter
-		try {
-			System.out.println(FileBurbujas);
-			FileBurbujas = FileLogger.CrearArchivo("Log_Burbujas");
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-		
-		
-		for (int i = 0; i < list.length; i++) {
-			newLine += " " + list[i];
-		}
-		newLine += "\r\n";
-		
-		//Se crea un trycatch para agregar las lineas al archivo de texto creado
-		try {
-			FileLogger.AgregarTextoLineaNueva(FileBurbujas, " *** BubbleSort ***\r\n");
-			FileLogger.AgregarTextoLineaNueva(FileBurbujas, "Original: " + newLine);
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-		
-		for (int i = 0; i < list.length - 1; i++) {
-			for (int j = i + 1; j < list.length; j++) {
-				countCompareOps++;
-				if (list[i].compareTo(list[j]) > 0) {
-					
-					String actualArray = "";
-					for (int k = 0; k < list.length; k++) {
-						if (k == i) {
-							actualArray += " i => (";
-						}
-						
-						if (k == j) {
-							actualArray += " j => (";
-						}
-						
-						actualArray += " " + list[k];
-						
-						if (k == i || k == j) {
-							actualArray += " ) ";
-						}
-						
-					}
-					
-					actualArray += "\r\n";
-					
-					try {
-						FileLogger.AgregarTextoLineaNueva(FileBurbujas, actualArray);
-					} catch (IOException e) {
-						System.out.println(e.getMessage());
-					}
-					
-					
-					Comparable temp = list[i];
-					list[i] = list[j];
-					list[j] = temp;
-					countReplacement++;
-					
+		//Se declaran variables
+		int n = list.length; 
+		//Se crea ciclo for para cada i
+		for (int i = 0; i < n-1; i++)
+			//Se crea ciclo for para cada j 
+			for (int j = 0; j < n-i-1; j++) 
+				//Se realiza proceso if para comparar
+				if (list[j].compareTo(list[j+1]) < 0 )  
+				{ 
+					// cambia arr[j+1] con arr[j] 
+					Comparable temp = list[j]; 
+					list[j] = list[j+1]; 
+					list[j+1] = temp; 
 				}
-			}
-		}
-		
-		newLine = "";
-		
-		for (int i = 0; i < list.length; i++) {
-			newLine += " " + list[i];
-		}
-		newLine += "\r\n";
-				
-		try {
-			FileLogger.AgregarTextoLineaNueva(FileBurbujas, "Ordenado: " + newLine);
-			FileLogger.AgregarTextoLineaNueva(FileBurbujas, "Comparar: " + countCompareOps + " Intercambios: " + countReplacement);
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-		
-	}
+		return ("Sus datos en orden son: ");}
 	
 }
