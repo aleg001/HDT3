@@ -1,43 +1,89 @@
-/*******************************************************
-* Universidad del Valle de Guatemala
-* Algoritmos y Estructuras de Datos
-* Profesor: Moises Gonzales
-* MergeSort.java
-* Autores: Alejandro Gomez y Ana Ramirez
-* Fecha de creacion: 09/02/2021
-* Ultima edicion: 09/02/2021
-********************************************************/
-import java.util.Arrays;
-import java.util.ArrayList;
+package colocarr;
 
-public class MergeSort implements InterfaceComparar {
+public class MergeSort {
+	public MergeSort() {
+		
+	}
+	void merge(int arr[], int l, int m, int r) 
+    { 
+        // Find sizes of two subarrays to be merged 
+        int n1 = m - l + 1; 
+        int n2 = r - m; 
+  
+        /* Create temp arrays */
+        int L[] = new int [n1]; 
+        int R[] = new int [n2]; 
+  
+        /*Copy data to temp arrays*/
+        for (int i=0; i<n1; ++i) 
+            L[i] = arr[l + i]; 
+        for (int j=0; j<n2; ++j) 
+            R[j] = arr[m +1+ j]; 
+  
+  
+        /* Merge the temp arrays */
+  
+        // Initial indexes of first and second subarrays 
+        int i = 0, j = 0; 
+  
+        // Initial index of merged subarry array 
+        int k = l; 
+        while (i < n1 && j < n2) 
+        { 
+            if (L[i] <= R[j]) 
+            { 
+                arr[k] = L[i]; 
+                i++; 
+            } 
+            else
+            { 
+                arr[k] = R[j]; 
+                j++; 
+            } 
+            k++; 
+        } 
+  
+        /* Copy remaining elements of L[] if any */
+        while (i < n1) 
+        { 
+            arr[k] = L[i]; 
+            i++; 
+            k++; 
+        } 
+  
+        /* Copy remaining elements of R[] if any */
+        while (j < n2) 
+        { 
+            arr[k] = R[j]; 
+            j++; 
+            k++; 
+        } 
+    } 
+  
+    // Main function that sorts arr[l..r] using 
+    // merge() 
+    private void sort(int arr[], int l, int r) 
+    { 
+    	
+        if (l < r) 
+        { 
+            // Find the middle point 
+            int m = (l+r)/2; 
+  
+            // Sort first and second halves 
+            sort(arr, l, m); 
+            sort(arr , m+1, r); 
+  
+            // Merge the sorted halves 
+            merge(arr, l, m, r); 
+        } 
+        
+    } 
     
-    
-
-      /**
-      * Método para proceso de merge
-      * 
-      * @param Comparable lista
-      * @return Comparable lista
-      * @author Alejandro Gomez
-      **/
-
-    private static void MergeSorter(Comparable[] primero, Comparable[] segundo, Comparable[] resultado) {
-      //Se declaran variables
-      int xprimero = 0; int xsegundo = 0;int resultadod = 0;
-      //Ciclo while para comparar longitud
-      while (xprimero < primero.length && xsegundo < segundo.length) 
-      //Se declara if para comparar el primero con el segundo
-      {if (primero[xprimero].compareTo(segundo[xsegundo]) > 0) 
-          { //Si cumple con las condiciones, continua
-            resultado[resultadod] = primero[xprimero];
-              xprimero++;} 
-          else{resultado[resultadod] = segundo[xsegundo];
-              xsegundo++;}
-          //Despues que acaba el else o continua el if
-            resultadod++;}
-      //Se copia a los arrays la informacion
-      System.arraycopy(primero, xprimero, resultado, resultadod, first.length - xprimero);System.arraycopy(segundo, xsegundo, resultado, resultadod, second.length - xsegundo);
-}
-
+    public int[] compareTo(int[] list) {
+    	int l=0;
+    	int r=list.length-1;
+    	sort(list,l,r);
+    	return list;
+    }
 }
