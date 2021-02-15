@@ -10,54 +10,52 @@
  ********************************************************/
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class QuickSort  {
 
-    public QuickSort(){
-
-    }
+  
     /**
-     *
-     * @param ArrayList<Integer> list
-     * @return ArrayList<Integer> list
+     * Metodo QuickSorter
+     * @param Comparable[] lista
+     * @param Int bajo
+     * @param Int alto
      * @author Alejandro Gomez y Ana Ramirez
      **/
 
+     /* Metodo para proceso de quicksort */
+      public static String QuickSorter(Comparable[] lista, int bajo, int alto)
+      //Se realiza un ciclo if en caso el dato alto es mas pequeno que el bajo.
+      {if (bajo < alto)
+          {int IndexParticion = MetodoParticion(lista, bajo, alto); QuickSorter(lista, bajo, IndexParticion-1); QuickSorter(lista, IndexParticion+1, alto);}
+          //Se manda mensaje que se ordeno datos
+          return ("Sus datos de forma ordenada son: ");}
 
-    public ArrayList<Integer> compareTo(ArrayList<Integer> list) {
-        int begi=0;
-        int end=list.size()-1;
-        begi=list.get(begi);
-        end=list.get(end);
-        quickSort(list,begi,end);
-        return list;
-    }
 
-    private void quickSort(ArrayList<Integer>  arr, int begi, int end) {
-        if (begi < end) {
-            int partin = divi(arr, begi, end);
+      
+    /**
+     * Metodo MetodoParticion
+     * @param Comparable[] lista
+     * @param Int bajo
+     * @param Int alto
+     * @author Alejandro Gomez y Ana Ramirez
+     **/
 
-            quickSort(arr, begi, partin-1);
-            quickSort(arr, partin+1, end);
-        }
-    }
+     /* Metodo para proceso de particion */
 
-    private int divi(ArrayList<Integer> l, int begi, int end) {
-        int pivote = l.get(end);
-        int i = (begi-1);
-
-        for (int j = begi; j < end; j++) {
-            if (l.get(j)<= pivote) {
-                i++;
-                int temp = l.get(i);
-                l.set(i,l.get(j));
-                l.set(j,temp);
-            }
-        }
-
-        int t = l.get(i+1);
-        l.set(i+1,l.get(end));
-        l.set(end,t);
+      private static int MetodoParticion(Comparable[] list, int bajo, int alto) {
+        //Se definen instancias
+        Comparable Pivote = list[alto]; int i = (bajo-1);
+        //Se crea ciclo for:
+        for (int j=bajo; j<alto; j++)
+        //Se crea ciclo if en la cual se compara el tamano del pivote.
+        {if (list[j].compareTo(Pivote) > 0) {i++; Comparable temp = list[i];list[i] = list[j];list[j] = temp;}}
+        //Se define una instancia temporal
+        Comparable temp = list[i+1];
+        list[i+1] = list[alto];
+        list[alto] = temp;
+        //Se devuelve i+1.
         return i+1;
     }
 
