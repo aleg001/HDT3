@@ -19,7 +19,6 @@ public class Driver {
         //Se declaran instancias y declaran variables
         FileLogger f=new FileLogger();
         vistaSort v=new vistaSort();
-        
         Scanner scan = new Scanner(System.in);
         boolean bandc=true;
         int opcion=0;int counter = 0;

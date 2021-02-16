@@ -145,8 +145,8 @@ public class FileLogger {
 	/***
 	 * CreadorDeNumerosEscritura
 
-	 * @param ArrayList<Integer> Numbers
-	 * @return n/a
+	 * @param n/a
+	 * @return int[]
 	 */
 
 	/*	Se crean numeros y genera numeros

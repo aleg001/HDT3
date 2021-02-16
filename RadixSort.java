@@ -14,22 +14,49 @@ public class RadixSort {
 	public RadixSort() {
 		
 	}
-	    /**
-     * Metodo QuickSorter
+	/**
+     * Metodo RadixSort
      * @param Comparable[] lista
      * @param Int bajo
      * @param Int alto
      * @author Alejandro Gomez y Ana Ramirez
      **/
 	
-	private int get_max_val(int my_arr[], int arr_len) {
+	private int ValorMaximo(int my_arr[], int arr_len) {
 	      int max_val = my_arr[0];
 	      for (int i = 1; i < arr_len; i++)
 	         if (my_arr[i] > max_val)
 	         max_val = my_arr[i];
 	      return max_val;
 	}
-	private void countSort(int my_arr[], int arr_len, int exp) {
+
+
+	/**
+    * Método para proceso de comparar
+    * 
+    * @param int[] lista
+    * @return int[] lista
+    * @author Alejandro Gomez y Ana Ramirez
+    **/
+	public int[] compareTo(int[] my_arr) {
+		int arr_len=my_arr.length;
+		int m = ValorMaximo(my_arr, arr_len);
+		for (int exp = 1; m/exp > 0; exp *= 10)
+		sortDeConteo(my_arr, arr_len, exp);
+		return my_arr;
+	}
+
+	/**
+    * Método para proceso de sortDeConteo
+    * 
+    * @param int[] lista
+	* @param int arrlength
+	* @param int exp
+    * @return n/a
+    * @author Alejandro Gomez y Ana Ramirez
+    **/
+
+	private void sortDeConteo(int my_arr[], int arr_len, int exp) {
 	      int result[] = new int[arr_len];
 	      int i;
 	      int count[] = new int[10];
@@ -45,11 +72,6 @@ public class RadixSort {
 	      for (i = 0; i < arr_len; i++)
 	         my_arr[i] = result[i];
 	 }
-	 public int[] compareTo(int[] my_arr) {
-		  int arr_len=my_arr.length;
-	      int m = get_max_val(my_arr, arr_len);
-	      for (int exp = 1; m/exp > 0; exp *= 10)
-	      countSort(my_arr, arr_len, exp);
-	      return my_arr;
-	  }
+
+
 }

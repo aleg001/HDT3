@@ -17,7 +17,7 @@ public class QuickSort  {
     	 
      }
     /**
-     * Metodo QuickSorter
+     * Metodo CompareTo
      * @param Comparable[] lista
      * @param Int bajo
      * @param Int alto
@@ -32,6 +32,13 @@ public class QuickSort  {
      }
 
      /* Metodo para proceso de quicksort */
+      /**
+     * Metodo QuickSorter
+     * @param int[] lista
+     * @param Int bajo
+     * @param Int alto
+     * @author Alejandro Gomez y Ana Ramirez
+     **/
       private void QuickSorter(int[] lista, int bajo, int alto)
       //Se realiza un ciclo if en caso el dato alto es mas pequeno que el bajo.
       {

@@ -39,65 +39,51 @@ public class MergeSort {
             R[j] = arr[m +1+ j]; 
   
   
-        /* Merge the temp arrays */
-  
-        // Initial indexes of first and second subarrays 
-        int i = 0, j = 0; 
-  
-        // Initial index of merged subarry array 
-        int k = l; 
+        //Se definen variables de uso en el while
+        int i = 0, j = 0; int k = l; 
         while (i < n1 && j < n2) 
         { 
-            if (L[i] <= R[j]) 
-            { 
-                arr[k] = L[i]; 
-                i++; 
-            } 
-            else
-            { 
-                arr[k] = R[j]; 
-                j++; 
-            } 
+            if (L[i] <= R[j]) {arr[k] = L[i]; i++;} 
+            else{arr[k] = R[j]; j++;} 
             k++; 
         } 
   
-        /* Copy remaining elements of L[] if any */
         while (i < n1) 
-        { 
-            arr[k] = L[i]; 
-            i++; 
-            k++; 
-        } 
-  
-        /* Copy remaining elements of R[] if any */
+        {arr[k] = L[i]; i++; k++; } 
         while (j < n2) 
-        { 
-            arr[k] = R[j]; 
-            j++; 
-            k++; 
-        } 
+        {arr[k] = R[j]; j++; k++;} 
     } 
-  
-    // Main function that sorts arr[l..r] using 
-    // merge() 
+
+
+    /**
+    * Método para proceso de sorting
+    * 
+    * @param int[] lista
+    * @param int l
+    * @param int r
+    * @return int[] lista
+    * @author Alejandro Gomez y Ana Ramirez
+    **/
+
     private void Sort(int arr[], int l, int r) 
     { 
       
         if (l < r) 
-        { 
-            // Find the middle point 
-            int m = (l+r)/2; 
-  
-            // Sort first and second halves 
+        {int m = (l+r)/2;           
             Sort(arr, l, m); 
             Sort(arr , m+1, r); 
-  
-            // Merge the sorted halves 
-            MergeSorter(arr, l, m, r); 
-        } 
+            MergeSorter(arr, l, m, r); } 
         
-    } 
-    
+    }
+
+    /**
+    * Método para proceso de comparar
+    * 
+    * @param int[] lista
+    * @return int[] lista
+    * @author Alejandro Gomez y Ana Ramirez
+    **/
+
     public int[] compareTo(int[] list) {
       int l=0;
       int r=list.length-1;
