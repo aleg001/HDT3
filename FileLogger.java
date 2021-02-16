@@ -157,9 +157,14 @@ public class FileLogger {
         try{
 			//Se declaran instancias
             Random rand = new Random();
-			String Ubicacion = "datos.txt";
-			String lines = "";
-			StringBuilder CreadorDeStrings = new StringBuilder();
+			
+			BufferedWriter obtenido = null;
+			File file = new File("datos.txt");
+			obtenido = new BufferedWriter(new FileWriter(file));
+
+			//String Ubicacion = "datos.txt";
+			//String lines = "";
+			//StringBuilder CreadorDeStrings = new StringBuilder();
 			
 			int x = rand.nextInt(2990)+10;
 			int[] numerosAcumulados = new int[x];
@@ -168,18 +173,20 @@ public class FileLogger {
                 int nuevo=rand.nextInt(100)+1;
                 acumulador=acumulador+ String.valueOf(nuevo)+",";
 				numerosAcumulados[i] = nuevo;
+				obtenido.write(acumulador);
             }
 			
 
             //Se almacena lo del archivo creado
-            File ArchivoCreado = new File(Ubicacion);
-            if(!ArchivoCreado.exists()){ArchivoCreado.createNewFile();}
+            
+			//File ArchivoCreado = new File(Ubicacion);
+            //if(!ArchivoCreado.exists()){ArchivoCreado.createNewFile();}
 
             //En el archivo se crea lo indicado
-            FileWriter EscrituraArchivo = new FileWriter(ArchivoCreado); BufferedWriter BufferEscritor = new BufferedWriter(EscrituraArchivo);
+            //FileWriter EscrituraArchivo = new FileWriter(ArchivoCreado); BufferedWriter BufferEscritor = new BufferedWriter(EscrituraArchivo);
 
             //Los archivos de texto se escriben y cierran
-            BufferEscritor.write(acumulador);BufferEscritor.close();
+            //BufferEscritor.write(acumulador);BufferEscritor.close();
 
 			//En caso de un error
 			return numerosAcumulados;
